@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "D-DIN-Bold";
+  src: url("../../Fonts/D-DIN-Bold.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.footer {
+  background: #000;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 45px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.links li {
+  list-style: none;
+  margin: 0 17px;
+}
+
+.links span {
+  font: 12px/18px "D-DIN-Bold", Arial, Verdana, sans-serif;
+  color: #979797;
+}
+
+.links a {
+  position: relative;
+  text-decoration: none;
+  font: 12px/18px "D-DIN-Bold", Arial, Verdana, sans-serif;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+  padding-bottom: 5px;
+}
+
+.links a::after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  height: 0;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+
+.links a:hover::after {
+  height: 1px;
+  width: 100%;
+}

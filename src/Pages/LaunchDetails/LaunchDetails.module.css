@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.launchDetails {
+  background: #000;
+  color: #fff;
+  max-width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Saira Semi Condensed", sans-serif;
+}
+
+.launchDetails h1 {
+  padding-top: 20px;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.col1 {
+  width: 850px;
+  height: 450px;
+}
+
+.col1 p{
+    margin-top: 30px;
+}
+
+.row {
+  margin-left: 10px;
+}
+
+.col2 h3, .col3 h3, .col4 h3 {
+  text-align: center;
+  font-size: 27px;
+  font-weight: 300;
+}
+
+.col2 h4, .col3 h4, .col4 h4 {
+   text-align: left;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.col2 p, .col3 p, .col4 p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col2 p span:first-child, .col3 p span:first-child, .col4 p span:first-child {
+  color: #A7A9AC;
+}
+
+hr {
+  background: rgba(255, 255, 255, 0.12);
+  height: .3px;
+}
+
+.payloadNo {
+  text-align: left;
+}

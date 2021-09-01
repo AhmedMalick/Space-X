@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed&display=swap");
+
+@font-face {
+  font-family: "D-DIN-Bold";
+  src: url("../../Fonts/D-DIN.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.launches {
+  max-width: 100vw;
+  background: #000;
+  color: #fff;
+  font-family: "Saira Semi Condensed", sans-serif;
+}
+
+.launches h1 {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 30px;
+}
+
+.container {
+  margin: 0 50px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 0;
+}
+
+.launch {
+  padding: 3rem 1rem;
+  position: relative;
+  padding-top: 2rem;
+  margin: 30px;
+}
+
+.mission_name {
+  position: relative;
+  font-size: 30px;
+}
+
+.mission_name::after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  height: 0;
+  width: 0;
+  left: 0;
+  bottom: 0;
+  transition: 0.3s;
+}
+
+.mission_name:hover::after {
+  height: 1px;
+  width: 100%;
+}
+
+.details {
+  margin: 20px 0;
+}
+
+.launch p span {
+  color: #a7a9ac;
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn {
+  margin-top: 20px;
+  width: 120px;
+  height: 50px;
+  position: relative;
+  border: 1px solid #fff;
+  font: 14px/50px "D-DIN-Bold", Arial, Verdana, sans-serif;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  color: #000;
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s linear;
+  transform: translateY(100%);
+}
+
+.btn:hover::before {
+  transform: translateY(0);
+  z-index: -1;
+}
+
+.btn:hover span{
+  color: #000;
+}
