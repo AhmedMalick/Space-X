@@ -16,20 +16,16 @@ const Events: FC<Props> = ({ data }) => {
           data.histories.map((history, index) => (
             <div key={index} className={styles.card}>
               <h3>{history?.title}</h3>
-              {history?.flight ? (
+              {history?.flight?.links?.video_link ? (
                 <ReactPlayer
-                  url={JSON.stringify(history?.flight?.links?.video_link)}
-                  width="560px"
-                  height="315px"
+                  className={styles.video}
+                  data-testid="react-player"
+                  light={true}
+                  controls={true}
+                  url={history?.flight?.links?.video_link}
                 />
-              ) : (
-                <ReactPlayer
-                  url="https://www.youtube.com/embed/x-KiDqxAMU0"
-                  width="560px"
-                  height="315px"
-                />
-              )}
-              <div className={styles.time}>
+              ) : null}
+              <div>
                 <p>{history?.details}</p>
                 <h2>{history?.event_date_utc}</h2>
               </div>

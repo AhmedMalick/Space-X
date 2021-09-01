@@ -1,6 +1,6 @@
 overwrite: true
 schema: "https://api.spacex.land/graphql/"
-documents: "./src/Pages/**/*.{ts, tsx}"
+documents: "./src/Pages/**/*"
 generates:
   src/generated/graphql.tsx:
     plugins:

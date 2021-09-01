@@ -11,7 +11,7 @@ const Home = () => {
                     <h4>UPCOMING LAUNCHES</h4>
                     <h1>CRS-23 MISSION</h1>
                     <div className={styles.btn}>
-                        <Link to='/'>WATCH</Link>
+                        <Link to='/'>REWATCH</Link>
                     </div>
                 </div>
                 <div className={styles.bottom}>
@@ -26,7 +26,7 @@ const Home = () => {
                     <h4>RECENT LAUNCHES</h4>
                     <h1>TRANSPORTER-2 MISSION</h1>
                     <div className={styles.btn}>
-                        <Link to='/'>WATCH</Link>
+                        <Link to='/'>REWATCH</Link>
                     </div>
                 </div>
             </section>
@@ -35,7 +35,7 @@ const Home = () => {
                 <div className={styles.left}>
                     <h1>STARSHIP TO LAND NASA ASTRONAUTS ON THE MOON</h1>
                     <div className={styles.btn}>
-                        <Link to='/'>WATCH</Link>
+                        <Link to='/'>LEARN MORE</Link>
                     </div>
                 </div>
             </section>
@@ -50,7 +50,7 @@ const Home = () => {
                     <h1>DRAGON DOCKING SIMULATOR</h1>
                     <p>Dragon is designed to autonomously dock and undock with the International Space Station. However, the crew can take manual control of the spacecraft if necessary.</p>
                     <div className={styles.btn}>
-                        <Link to='/'>WATCH</Link>
+                        <Link to='/'>TRY NOW</Link>
                     </div>
                 </div>
             </section>

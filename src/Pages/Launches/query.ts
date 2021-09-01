@@ -14,6 +14,9 @@ const LAUNCHES_QUERY = gql`{
     rocket {
       rocket_name
     }
+    links {
+      video_link
+    }
   }
 }
 `;

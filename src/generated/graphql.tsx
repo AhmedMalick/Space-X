@@ -1333,12 +1333,12 @@ export type LaunchDetai = Exact<{
 }>;
 
 
-export type LaunchDetailsQuery = { __typename?: 'Query', launch?: Maybe<{ __typename?: 'Launch', mission_name?: Maybe<string>, details?: Maybe<string>, upcoming?: Maybe<boolean>, is_tentative?: Maybe<boolean>, launch_date_local?: Maybe<any>, launch_success?: Maybe<boolean>, launch_site?: Maybe<{ __typename?: 'LaunchSite', site_name_long?: Maybe<string> }>, links?: Maybe<{ __typename?: 'LaunchLinks', mission_patch?: Maybe<string>, flickr_images?: Maybe<Array<Maybe<string>>>, video_link?: Maybe<string>, wikipedia?: Maybe<string> }>, telemetry?: Maybe<{ __typename?: 'LaunchTelemetry', flight_club?: Maybe<string> }>, rocket?: Maybe<{ __typename?: 'LaunchRocket', rocket_name?: Maybe<string>, first_stage?: Maybe<{ __typename?: 'LaunchRocketFirstStage', cores?: Maybe<Array<Maybe<{ __typename?: 'LaunchRocketFirstStageCore', flight?: Maybe<number>, gridfins?: Maybe<boolean>, land_success?: Maybe<boolean>, landing_intent?: Maybe<boolean>, landing_type?: Maybe<string>, landing_vehicle?: Maybe<string>, legs?: Maybe<boolean>, reused?: Maybe<boolean>, core?: Maybe<{ __typename?: 'Core', asds_attempts?: Maybe<number>, asds_landings?: Maybe<number>, block?: Maybe<number>, id?: Maybe<string>, original_launch?: Maybe<any>, reuse_count?: Maybe<number>, rtls_attempts?: Maybe<number>, rtls_landings?: Maybe<number>, status?: Maybe<string>, water_landing?: Maybe<boolean>, missions?: Maybe<Array<Maybe<{ __typename?: 'CapsuleMission', flight?: Maybe<number>, name?: Maybe<string> }>>> }> }>>> }>, second_stage?: Maybe<{ __typename?: 'LaunchRocketSecondStage', payloads?: Maybe<Array<Maybe<{ __typename?: 'Payload', manufacturer?: Maybe<string>, nationality?: Maybe<string>, customers?: Maybe<Array<Maybe<string>>>, orbit?: Maybe<string>, payload_type?: Maybe<string>, reused?: Maybe<boolean>, payload_mass_kg?: Maybe<number>, payload_mass_lbs?: Maybe<number> }>>> }> }> }> };
+export type LaunchDetailsQuery = { __typename?: 'Query', launch?: Maybe<{ __typename?: 'Launch', mission_name?: Maybe<string>, details?: Maybe<string>, upcoming?: Maybe<boolean>, is_tentative?: Maybe<boolean>, launch_date_local?: Maybe<any>, launch_success?: Maybe<boolean>, launch_site?: Maybe<{ __typename?: 'LaunchSite', site_name_long?: Maybe<string> }>, links?: Maybe<{ __typename?: 'LaunchLinks', video_link?: Maybe<string> }>, telemetry?: Maybe<{ __typename?: 'LaunchTelemetry', flight_club?: Maybe<string> }>, rocket?: Maybe<{ __typename?: 'LaunchRocket', rocket_name?: Maybe<string>, first_stage?: Maybe<{ __typename?: 'LaunchRocketFirstStage', cores?: Maybe<Array<Maybe<{ __typename?: 'LaunchRocketFirstStageCore', flight?: Maybe<number>, gridfins?: Maybe<boolean>, land_success?: Maybe<boolean>, landing_intent?: Maybe<boolean>, landing_type?: Maybe<string>, landing_vehicle?: Maybe<string>, legs?: Maybe<boolean>, reused?: Maybe<boolean>, core?: Maybe<{ __typename?: 'Core', asds_attempts?: Maybe<number>, asds_landings?: Maybe<number>, block?: Maybe<number>, id?: Maybe<string>, original_launch?: Maybe<any>, reuse_count?: Maybe<number>, rtls_attempts?: Maybe<number>, rtls_landings?: Maybe<number>, status?: Maybe<string>, water_landing?: Maybe<boolean>, missions?: Maybe<Array<Maybe<{ __typename?: 'CapsuleMission', flight?: Maybe<number>, name?: Maybe<string> }>>> }> }>>> }>, second_stage?: Maybe<{ __typename?: 'LaunchRocketSecondStage', payloads?: Maybe<Array<Maybe<{ __typename?: 'Payload', manufacturer?: Maybe<string>, nationality?: Maybe<string>, customers?: Maybe<Array<Maybe<string>>>, orbit?: Maybe<string>, payload_type?: Maybe<string>, reused?: Maybe<boolean>, payload_mass_kg?: Maybe<number>, payload_mass_lbs?: Maybe<number> }>>> }> }> }> };
 
 export type Unnamed_ = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { __typename?: 'Query', launches?: Maybe<Array<Maybe<{ __typename?: 'Launch', id?: Maybe<string>, details?: Maybe<string>, mission_name?: Maybe<string>, launch_date_local?: Maybe<any>, launch_success?: Maybe<boolean>, upcoming?: Maybe<boolean>, launch_site?: Maybe<{ __typename?: 'LaunchSite', site_name_long?: Maybe<string> }>, rocket?: Maybe<{ __typename?: 'LaunchRocket', rocket_name?: Maybe<string> }> }>>> };
+export type Unnamed_1_Query = { __typename?: 'Query', launches?: Maybe<Array<Maybe<{ __typename?: 'Launch', id?: Maybe<string>, details?: Maybe<string>, mission_name?: Maybe<string>, launch_date_local?: Maybe<any>, launch_success?: Maybe<boolean>, upcoming?: Maybe<boolean>, launch_site?: Maybe<{ __typename?: 'LaunchSite', site_name_long?: Maybe<string> }>, rocket?: Maybe<{ __typename?: 'LaunchRocket', rocket_name?: Maybe<string> }>, links?: Maybe<{ __typename?: 'LaunchLinks', video_link?: Maybe<string> }> }>>> };
 
 export type Rocke = Exact<{ [key: string]: never; }>;
 
@@ -1400,10 +1400,7 @@ export const LaunchDetailsDocument = gql`
       site_name_long
     }
     links {
-      mission_patch
-      flickr_images
       video_link
-      wikipedia
     }
     telemetry {
       flight_club
@@ -1496,6 +1493,9 @@ export const Document = gql`
     }
     rocket {
       rocket_name
+    }
+    links {
+      video_link
     }
   }
 }
