@@ -2,7 +2,7 @@
  
 [live Site](https://a-space-x-app.netlify.app/)
 
-![Timer App](/preview.png)
+![Space X App](/preview.png)
 
 This is the code repo of Timer App. There I used:
   * [React](https://reactjs.org)
