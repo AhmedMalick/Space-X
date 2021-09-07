@@ -5,6 +5,7 @@ const cacheFiles = [
   "/static/media/video.023e76fa.mp4",
   "/static/css/main.932b94d9.chunk.css",
   "/static/js/2.3a42b226.chunk.js",
+  '/static/js/main.a17aeb32.chunk.js',
   "/static/js/main.e8c49f3a.chunk.js",
   "/static/media/bg-1.0da36e21.jpg",
   "/static/media/bg-2.ab56f8ec.jpg",
