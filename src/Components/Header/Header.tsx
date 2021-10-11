@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
 const Header = () => {
-  
   const [mobNav, setMobNav] = useState(false);
 
   return (
@@ -17,8 +16,7 @@ const Header = () => {
                 <path
                   fill="#fff"
                   d="M37.5,30.5H10.9v-6.6h34.3c-0.9-2.8-3.8-5.4-8.9-5.4H11.4c-5.7,0-9,2.1-9,6.7v4.9c0,4,3.4,6.3,8.4,6.3h26.9v7H1.5c0.9,3.8,3.8,5.8,9,5.8h27.1c5.7,0,8.5-2.2,8.5-6.9v-4.9C46.1,33.1,42.8,30.8,37.5,30.5z"
-                >
-                </path>
+                ></path>
               </g>
               <g>
                 <path
@@ -100,7 +98,7 @@ const Header = () => {
             className={`${styles.close_navbar} ${styles.open}`}
             onClick={() => setMobNav(!mobNav)}
           >
-            <span></span>
+            <span></span> 
             <span></span>
             <span></span>
           </div>

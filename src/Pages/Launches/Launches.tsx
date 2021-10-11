@@ -23,7 +23,7 @@ const Launches: FC<Props> = ({ data }) => {
       <div className={styles.container}>
         <Timeline align="alternate">
           {data?.launches?.map((launch, index) => (
-            <TimelineItem>
+            <TimelineItem key={index}>
               <TimelineSeparator>
                 <TimelineDot />
                 <TimelineConnector />

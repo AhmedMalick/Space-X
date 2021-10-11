@@ -28,6 +28,7 @@
 }
 
 .card {
+  background: #fff !important;
   padding: 3rem 1rem;
   position: relative;
   padding-top: 5rem;
