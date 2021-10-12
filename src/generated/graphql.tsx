@@ -27,6 +27,7 @@ export type Address = {
 
 export type Capsule = {
   __typename?: 'Capsule';
+  dragon?: Maybe<Dragon>;
   id?: Maybe<Scalars['ID']>;
   landings?: Maybe<Scalars['Int']>;
   missions?: Maybe<Array<Maybe<CapsuleMission>>>;
@@ -34,7 +35,6 @@ export type Capsule = {
   reuse_count?: Maybe<Scalars['Int']>;
   status?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
-  dragon?: Maybe<Dragon>;
 };
 
 export type CapsuleMission = {
@@ -70,8 +70,8 @@ export type Core = {
 
 export type CoreMission = {
   __typename?: 'CoreMission';
-  name?: Maybe<Scalars['String']>;
   flight?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 export type CoresFind = {
@@ -164,8 +164,8 @@ export type Force = {
 
 export type HistoriesResult = {
   __typename?: 'HistoriesResult';
-  result?: Maybe<Result>;
   data?: Maybe<Array<Maybe<History>>>;
+  result?: Maybe<Result>;
 };
 
 export type History = {
@@ -173,10 +173,10 @@ export type History = {
   details?: Maybe<Scalars['String']>;
   event_date_unix?: Maybe<Scalars['Date']>;
   event_date_utc?: Maybe<Scalars['Date']>;
+  flight?: Maybe<Launch>;
   id?: Maybe<Scalars['ID']>;
   links?: Maybe<Link>;
   title?: Maybe<Scalars['String']>;
-  flight?: Maybe<Launch>;
 };
 
 export type HistoryFind = {
@@ -190,8 +190,8 @@ export type Info = {
   __typename?: 'Info';
   ceo?: Maybe<Scalars['String']>;
   coo?: Maybe<Scalars['String']>;
-  cto_propulsion?: Maybe<Scalars['String']>;
   cto?: Maybe<Scalars['String']>;
+  cto_propulsion?: Maybe<Scalars['String']>;
   employees?: Maybe<Scalars['Int']>;
   founded?: Maybe<Scalars['Int']>;
   founder?: Maybe<Scalars['String']>;
@@ -241,12 +241,12 @@ export type Launch = {
   mission_id?: Maybe<Array<Maybe<Scalars['String']>>>;
   mission_name?: Maybe<Scalars['String']>;
   rocket?: Maybe<LaunchRocket>;
+  ships?: Maybe<Array<Maybe<Ship>>>;
   static_fire_date_unix?: Maybe<Scalars['Date']>;
   static_fire_date_utc?: Maybe<Scalars['Date']>;
   telemetry?: Maybe<LaunchTelemetry>;
   tentative_max_precision?: Maybe<Scalars['String']>;
   upcoming?: Maybe<Scalars['Boolean']>;
-  ships?: Maybe<Array<Maybe<Ship>>>;
 };
 
 export type LaunchFind = {
@@ -304,20 +304,20 @@ export type LaunchFind = {
   side_core1_reuse?: Maybe<Scalars['String']>;
   side_core2_reuse?: Maybe<Scalars['String']>;
   site_id?: Maybe<Scalars['String']>;
-  site_name_long?: Maybe<Scalars['String']>;
   site_name?: Maybe<Scalars['String']>;
+  site_name_long?: Maybe<Scalars['String']>;
   start?: Maybe<Scalars['Date']>;
   tbd?: Maybe<Scalars['String']>;
-  tentative_max_precision?: Maybe<Scalars['String']>;
   tentative?: Maybe<Scalars['String']>;
+  tentative_max_precision?: Maybe<Scalars['String']>;
 };
 
 export type LaunchLinks = {
   __typename?: 'LaunchLinks';
   article_link?: Maybe<Scalars['String']>;
   flickr_images?: Maybe<Array<Maybe<Scalars['String']>>>;
-  mission_patch_small?: Maybe<Scalars['String']>;
   mission_patch?: Maybe<Scalars['String']>;
+  mission_patch_small?: Maybe<Scalars['String']>;
   presskit?: Maybe<Scalars['String']>;
   reddit_campaign?: Maybe<Scalars['String']>;
   reddit_launch?: Maybe<Scalars['String']>;
@@ -331,9 +331,9 @@ export type LaunchRocket = {
   __typename?: 'LaunchRocket';
   fairings?: Maybe<LaunchRocketFairings>;
   first_stage?: Maybe<LaunchRocketFirstStage>;
+  rocket?: Maybe<Rocket>;
   rocket_name?: Maybe<Scalars['String']>;
   rocket_type?: Maybe<Scalars['String']>;
-  rocket?: Maybe<Rocket>;
   second_stage?: Maybe<LaunchRocketSecondStage>;
 };
 
@@ -373,8 +373,8 @@ export type LaunchRocketSecondStage = {
 export type LaunchSite = {
   __typename?: 'LaunchSite';
   site_id?: Maybe<Scalars['String']>;
-  site_name_long?: Maybe<Scalars['String']>;
   site_name?: Maybe<Scalars['String']>;
+  site_name_long?: Maybe<Scalars['String']>;
 };
 
 export type LaunchTelemetry = {
@@ -384,8 +384,8 @@ export type LaunchTelemetry = {
 
 export type LaunchesPastResult = {
   __typename?: 'LaunchesPastResult';
-  result?: Maybe<Result>;
   data?: Maybe<Array<Maybe<Launch>>>;
+  result?: Maybe<Result>;
 };
 
 export type Launchpad = {
@@ -428,16 +428,16 @@ export type Mission = {
   id?: Maybe<Scalars['ID']>;
   manufacturers?: Maybe<Array<Maybe<Scalars['String']>>>;
   name?: Maybe<Scalars['String']>;
+  payloads?: Maybe<Array<Maybe<Payload>>>;
   twitter?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
   wikipedia?: Maybe<Scalars['String']>;
-  payloads?: Maybe<Array<Maybe<Payload>>>;
 };
 
 export type MissionResult = {
   __typename?: 'MissionResult';
-  result?: Maybe<Result>;
   data?: Maybe<Array<Maybe<Mission>>>;
+  result?: Maybe<Result>;
 };
 
 export type MissionsFind = {
@@ -482,8 +482,8 @@ export type Payload = {
   manufacturer?: Maybe<Scalars['String']>;
   nationality?: Maybe<Scalars['String']>;
   norad_id?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  orbit_params?: Maybe<PayloadOrbitParams>;
   orbit?: Maybe<Scalars['String']>;
+  orbit_params?: Maybe<PayloadOrbitParams>;
   payload_mass_kg?: Maybe<Scalars['Float']>;
   payload_mass_lbs?: Maybe<Scalars['Float']>;
   payload_type?: Maybe<Scalars['String']>;
@@ -535,72 +535,54 @@ export type PayloadsFind = {
 
 export type Query = {
   __typename?: 'Query';
+  capsule?: Maybe<Capsule>;
+  capsules?: Maybe<Array<Maybe<Capsule>>>;
+  capsulesPast?: Maybe<Array<Maybe<Capsule>>>;
+  capsulesUpcoming?: Maybe<Array<Maybe<Capsule>>>;
+  company?: Maybe<Info>;
+  core?: Maybe<Core>;
+  cores?: Maybe<Array<Maybe<Core>>>;
+  coresPast?: Maybe<Array<Maybe<Core>>>;
+  coresUpcoming?: Maybe<Array<Maybe<Core>>>;
+  dragon?: Maybe<Dragon>;
+  dragons?: Maybe<Array<Maybe<Dragon>>>;
+  histories?: Maybe<Array<Maybe<History>>>;
+  historiesResult?: Maybe<HistoriesResult>;
+  history?: Maybe<History>;
+  landpad?: Maybe<Landpad>;
+  landpads?: Maybe<Array<Maybe<Landpad>>>;
+  launch?: Maybe<Launch>;
+  launchLatest?: Maybe<Launch>;
+  launchNext?: Maybe<Launch>;
+  launches?: Maybe<Array<Maybe<Launch>>>;
+  launchesPast?: Maybe<Array<Maybe<Launch>>>;
+  launchesPastResult?: Maybe<LaunchesPastResult>;
+  launchesUpcoming?: Maybe<Array<Maybe<Launch>>>;
+  launchpad?: Maybe<Launchpad>;
+  launchpads?: Maybe<Array<Maybe<Launchpad>>>;
+  mission?: Maybe<Mission>;
+  missions?: Maybe<Array<Maybe<Mission>>>;
+  missionsResult?: Maybe<MissionResult>;
+  payload?: Maybe<Payload>;
+  payloads?: Maybe<Array<Maybe<Payload>>>;
+  roadster?: Maybe<Roadster>;
+  rocket?: Maybe<Rocket>;
+  rockets?: Maybe<Array<Maybe<Rocket>>>;
+  rocketsResult?: Maybe<RocketsResult>;
+  ship?: Maybe<Ship>;
+  ships?: Maybe<Array<Maybe<Ship>>>;
+  shipsResult?: Maybe<ShipsResult>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
-  capsules?: Maybe<Array<Maybe<Capsule>>>;
-  capsulesPast?: Maybe<Array<Maybe<Capsule>>>;
-  capsulesUpcoming?: Maybe<Array<Maybe<Capsule>>>;
-  capsule?: Maybe<Capsule>;
-  company?: Maybe<Info>;
-  cores?: Maybe<Array<Maybe<Core>>>;
-  coresPast?: Maybe<Array<Maybe<Core>>>;
-  coresUpcoming?: Maybe<Array<Maybe<Core>>>;
-  core?: Maybe<Core>;
-  dragons?: Maybe<Array<Maybe<Dragon>>>;
-  dragon?: Maybe<Dragon>;
-  histories?: Maybe<Array<Maybe<History>>>;
-  historiesResult?: Maybe<HistoriesResult>;
-  history?: Maybe<History>;
-  landpads?: Maybe<Array<Maybe<Landpad>>>;
-  landpad?: Maybe<Landpad>;
-  launches?: Maybe<Array<Maybe<Launch>>>;
-  launchesPast?: Maybe<Array<Maybe<Launch>>>;
-  launchesPastResult?: Maybe<LaunchesPastResult>;
-  launchesUpcoming?: Maybe<Array<Maybe<Launch>>>;
-  launch?: Maybe<Launch>;
-  launchLatest?: Maybe<Launch>;
-  launchNext?: Maybe<Launch>;
-  launchpads?: Maybe<Array<Maybe<Launchpad>>>;
-  launchpad?: Maybe<Launchpad>;
-  missions?: Maybe<Array<Maybe<Mission>>>;
-  missionsResult?: Maybe<MissionResult>;
-  mission?: Maybe<Mission>;
-  payloads?: Maybe<Array<Maybe<Payload>>>;
-  payload?: Maybe<Payload>;
-  roadster?: Maybe<Roadster>;
-  rockets?: Maybe<Array<Maybe<Rocket>>>;
-  rocketsResult?: Maybe<RocketsResult>;
-  rocket?: Maybe<Rocket>;
-  ships?: Maybe<Array<Maybe<Ship>>>;
-  shipsResult?: Maybe<ShipsResult>;
-  ship?: Maybe<Ship>;
 };
 
 
-export type QueryUsersArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
-};
-
-
-export type QueryUsers_AggregateArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
-};
-
-
-export type QueryUsers_By_PkArgs = {
-  id: Scalars['uuid'];
+export type QueryCapsuleArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -631,7 +613,7 @@ export type QueryCapsulesUpcomingArgs = {
 };
 
 
-export type QueryCapsuleArgs = {
+export type QueryCoreArgs = {
   id: Scalars['ID'];
 };
 
@@ -663,7 +645,7 @@ export type QueryCoresUpcomingArgs = {
 };
 
 
-export type QueryCoreArgs = {
+export type QueryDragonArgs = {
   id: Scalars['ID'];
 };
 
@@ -671,11 +653,6 @@ export type QueryCoreArgs = {
 export type QueryDragonsArgs = {
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryDragonArgs = {
-  id: Scalars['ID'];
 };
 
 
@@ -702,14 +679,29 @@ export type QueryHistoryArgs = {
 };
 
 
+export type QueryLandpadArgs = {
+  id: Scalars['ID'];
+};
+
+
 export type QueryLandpadsArgs = {
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
 };
 
 
-export type QueryLandpadArgs = {
+export type QueryLaunchArgs = {
   id: Scalars['ID'];
+};
+
+
+export type QueryLaunchLatestArgs = {
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryLaunchNextArgs = {
+  offset?: Maybe<Scalars['Int']>;
 };
 
 
@@ -749,18 +741,8 @@ export type QueryLaunchesUpcomingArgs = {
 };
 
 
-export type QueryLaunchArgs = {
+export type QueryLaunchpadArgs = {
   id: Scalars['ID'];
-};
-
-
-export type QueryLaunchLatestArgs = {
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryLaunchNextArgs = {
-  offset?: Maybe<Scalars['Int']>;
 };
 
 
@@ -770,7 +752,7 @@ export type QueryLaunchpadsArgs = {
 };
 
 
-export type QueryLaunchpadArgs = {
+export type QueryMissionArgs = {
   id: Scalars['ID'];
 };
 
@@ -789,7 +771,7 @@ export type QueryMissionsResultArgs = {
 };
 
 
-export type QueryMissionArgs = {
+export type QueryPayloadArgs = {
   id: Scalars['ID'];
 };
 
@@ -803,7 +785,7 @@ export type QueryPayloadsArgs = {
 };
 
 
-export type QueryPayloadArgs = {
+export type QueryRocketArgs = {
   id: Scalars['ID'];
 };
 
@@ -820,7 +802,7 @@ export type QueryRocketsResultArgs = {
 };
 
 
-export type QueryRocketArgs = {
+export type QueryShipArgs = {
   id: Scalars['ID'];
 };
 
@@ -843,8 +825,26 @@ export type QueryShipsResultArgs = {
 };
 
 
-export type QueryShipArgs = {
-  id: Scalars['ID'];
+export type QueryUsersArgs = {
+  distinct_on?: Maybe<Array<Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Users_Order_By>>;
+  where?: Maybe<Users_Bool_Exp>;
+};
+
+
+export type QueryUsers_AggregateArgs = {
+  distinct_on?: Maybe<Array<Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Users_Order_By>>;
+  where?: Maybe<Users_Bool_Exp>;
+};
+
+
+export type QueryUsers_By_PkArgs = {
+  id: Scalars['uuid'];
 };
 
 export type Result = {
@@ -907,16 +907,16 @@ export type Rocket = {
 
 export type RocketEngines = {
   __typename?: 'RocketEngines';
-  number?: Maybe<Scalars['Int']>;
-  type?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
-  layout?: Maybe<Scalars['String']>;
   engine_loss_max?: Maybe<Scalars['String']>;
+  layout?: Maybe<Scalars['String']>;
+  number?: Maybe<Scalars['Int']>;
   propellant_1?: Maybe<Scalars['String']>;
   propellant_2?: Maybe<Scalars['String']>;
   thrust_sea_level?: Maybe<Force>;
-  thrust_vacuum?: Maybe<Force>;
   thrust_to_weight?: Maybe<Scalars['Float']>;
+  thrust_vacuum?: Maybe<Force>;
+  type?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']>;
 };
 
 export type RocketFirstStage = {
@@ -931,8 +931,8 @@ export type RocketFirstStage = {
 
 export type RocketLandingLegs = {
   __typename?: 'RocketLandingLegs';
-  number?: Maybe<Scalars['Int']>;
   material?: Maybe<Scalars['String']>;
+  number?: Maybe<Scalars['Int']>;
 };
 
 export type RocketPayloadWeight = {
@@ -954,20 +954,20 @@ export type RocketSecondStage = {
 
 export type RocketSecondStagePayloadCompositeFairing = {
   __typename?: 'RocketSecondStagePayloadCompositeFairing';
-  height?: Maybe<Distance>;
   diameter?: Maybe<Distance>;
+  height?: Maybe<Distance>;
 };
 
 export type RocketSecondStagePayloads = {
   __typename?: 'RocketSecondStagePayloads';
-  option_1?: Maybe<Scalars['String']>;
   composite_fairing?: Maybe<RocketSecondStagePayloadCompositeFairing>;
+  option_1?: Maybe<Scalars['String']>;
 };
 
 export type RocketsResult = {
   __typename?: 'RocketsResult';
-  result?: Maybe<Result>;
   data?: Maybe<Array<Maybe<Rocket>>>;
+  result?: Maybe<Result>;
 };
 
 export type Ship = {
@@ -1010,34 +1010,34 @@ export type ShipMission = {
 };
 
 export type ShipsFind = {
-  id?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-  model?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
-  role?: Maybe<Scalars['String']>;
-  active?: Maybe<Scalars['Boolean']>;
-  imo?: Maybe<Scalars['Int']>;
-  mmsi?: Maybe<Scalars['Int']>;
   abs?: Maybe<Scalars['Int']>;
+  active?: Maybe<Scalars['Boolean']>;
+  attempted_landings?: Maybe<Scalars['Int']>;
   class?: Maybe<Scalars['Int']>;
-  weight_lbs?: Maybe<Scalars['Int']>;
-  weight_kg?: Maybe<Scalars['Int']>;
-  year_built?: Maybe<Scalars['Int']>;
-  home_port?: Maybe<Scalars['String']>;
-  status?: Maybe<Scalars['String']>;
-  speed_kn?: Maybe<Scalars['Int']>;
   course_deg?: Maybe<Scalars['Int']>;
+  home_port?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  imo?: Maybe<Scalars['Int']>;
   latitude?: Maybe<Scalars['Float']>;
   longitude?: Maybe<Scalars['Float']>;
-  successful_landings?: Maybe<Scalars['Int']>;
-  attempted_landings?: Maybe<Scalars['Int']>;
   mission?: Maybe<Scalars['String']>;
+  mmsi?: Maybe<Scalars['Int']>;
+  model?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  role?: Maybe<Scalars['String']>;
+  speed_kn?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['String']>;
+  successful_landings?: Maybe<Scalars['Int']>;
+  type?: Maybe<Scalars['String']>;
+  weight_kg?: Maybe<Scalars['Int']>;
+  weight_lbs?: Maybe<Scalars['Int']>;
+  year_built?: Maybe<Scalars['Int']>;
 };
 
 export type ShipsResult = {
   __typename?: 'ShipsResult';
-  result?: Maybe<Result>;
   data?: Maybe<Array<Maybe<Ship>>>;
+  result?: Maybe<Result>;
 };
 
 /** expression to compare columns of type String. All fields are combined with logical 'AND'. */
@@ -1323,24 +1323,24 @@ export type Uuid_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['uuid']>>;
 };
 
-export type Even = Exact<{ [key: string]: never; }>;
+export type EventsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type EventsQuery = { __typename?: 'Query', histories?: Maybe<Array<Maybe<{ __typename?: 'History', details?: Maybe<string>, event_date_utc?: Maybe<any>, title?: Maybe<string>, flight?: Maybe<{ __typename?: 'Launch', links?: Maybe<{ __typename?: 'LaunchLinks', video_link?: Maybe<string> }> }> }>>> };
 
-export type LaunchDetai = Exact<{
+export type LaunchDetailsQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type LaunchDetailsQuery = { __typename?: 'Query', launch?: Maybe<{ __typename?: 'Launch', mission_name?: Maybe<string>, details?: Maybe<string>, upcoming?: Maybe<boolean>, is_tentative?: Maybe<boolean>, launch_date_local?: Maybe<any>, launch_success?: Maybe<boolean>, launch_site?: Maybe<{ __typename?: 'LaunchSite', site_name_long?: Maybe<string> }>, links?: Maybe<{ __typename?: 'LaunchLinks', video_link?: Maybe<string> }>, telemetry?: Maybe<{ __typename?: 'LaunchTelemetry', flight_club?: Maybe<string> }>, rocket?: Maybe<{ __typename?: 'LaunchRocket', rocket_name?: Maybe<string>, first_stage?: Maybe<{ __typename?: 'LaunchRocketFirstStage', cores?: Maybe<Array<Maybe<{ __typename?: 'LaunchRocketFirstStageCore', flight?: Maybe<number>, gridfins?: Maybe<boolean>, land_success?: Maybe<boolean>, landing_intent?: Maybe<boolean>, landing_type?: Maybe<string>, landing_vehicle?: Maybe<string>, legs?: Maybe<boolean>, reused?: Maybe<boolean>, core?: Maybe<{ __typename?: 'Core', asds_attempts?: Maybe<number>, asds_landings?: Maybe<number>, block?: Maybe<number>, id?: Maybe<string>, original_launch?: Maybe<any>, reuse_count?: Maybe<number>, rtls_attempts?: Maybe<number>, rtls_landings?: Maybe<number>, status?: Maybe<string>, water_landing?: Maybe<boolean>, missions?: Maybe<Array<Maybe<{ __typename?: 'CapsuleMission', flight?: Maybe<number>, name?: Maybe<string> }>>> }> }>>> }>, second_stage?: Maybe<{ __typename?: 'LaunchRocketSecondStage', payloads?: Maybe<Array<Maybe<{ __typename?: 'Payload', manufacturer?: Maybe<string>, nationality?: Maybe<string>, customers?: Maybe<Array<Maybe<string>>>, orbit?: Maybe<string>, payload_type?: Maybe<string>, reused?: Maybe<boolean>, payload_mass_kg?: Maybe<number>, payload_mass_lbs?: Maybe<number> }>>> }> }> }> };
+export type LaunchDetailsQuery = { __typename?: 'Query', launch?: Maybe<{ __typename?: 'Launch', mission_name?: Maybe<string>, details?: Maybe<string>, launch_date_local?: Maybe<any>, launch_site?: Maybe<{ __typename?: 'LaunchSite', site_name_long?: Maybe<string> }>, links?: Maybe<{ __typename?: 'LaunchLinks', video_link?: Maybe<string> }>, rocket?: Maybe<{ __typename?: 'LaunchRocket', first_stage?: Maybe<{ __typename?: 'LaunchRocketFirstStage', cores?: Maybe<Array<Maybe<{ __typename?: 'LaunchRocketFirstStageCore', flight?: Maybe<number>, land_success?: Maybe<boolean>, landing_intent?: Maybe<boolean>, landing_type?: Maybe<string> }>>> }>, second_stage?: Maybe<{ __typename?: 'LaunchRocketSecondStage', payloads?: Maybe<Array<Maybe<{ __typename?: 'Payload', manufacturer?: Maybe<string>, nationality?: Maybe<string>, customers?: Maybe<Array<Maybe<string>>>, orbit?: Maybe<string>, payload_type?: Maybe<string>, payload_mass_lbs?: Maybe<number>, payload_mass_kg?: Maybe<number> }>>> }> }> }> };
 
-export type Unnamed_ = Exact<{ [key: string]: never; }>;
+export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { __typename?: 'Query', launches?: Maybe<Array<Maybe<{ __typename?: 'Launch', id?: Maybe<string>, details?: Maybe<string>, mission_name?: Maybe<string>, launch_date_local?: Maybe<any>, launch_success?: Maybe<boolean>, upcoming?: Maybe<boolean>, launch_site?: Maybe<{ __typename?: 'LaunchSite', site_name_long?: Maybe<string> }>, rocket?: Maybe<{ __typename?: 'LaunchRocket', rocket_name?: Maybe<string> }>, links?: Maybe<{ __typename?: 'LaunchLinks', video_link?: Maybe<string> }> }>>> };
+export type Unnamed_1_Query = { __typename?: 'Query', launches?: Maybe<Array<Maybe<{ __typename?: 'Launch', id?: Maybe<string>, details?: Maybe<string>, mission_name?: Maybe<string>, launch_date_local?: Maybe<any>, launch_success?: Maybe<boolean>, launch_site?: Maybe<{ __typename?: 'LaunchSite', site_name_long?: Maybe<string> }>, rocket?: Maybe<{ __typename?: 'LaunchRocket', rocket_name?: Maybe<string> }> }>>> };
 
-export type Rocke = Exact<{ [key: string]: never; }>;
+export type RocketsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type RocketsQuery = { __typename?: 'Query', rockets?: Maybe<Array<Maybe<{ __typename?: 'Rocket', name?: Maybe<string>, description?: Maybe<string>, first_flight?: Maybe<any>, active?: Maybe<boolean>, cost_per_launch?: Maybe<number> }>>> };
@@ -1376,63 +1376,36 @@ export const EventsDocument = gql`
  *   },
  * });
  */
-export function useEventsQuery(baseOptions?: Apollo.QueryHookOptions<EventsQuery, Even>) {
+export function useEventsQuery(baseOptions?: Apollo.QueryHookOptions<EventsQuery, EventsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<EventsQuery, Even>(EventsDocument, options);
+        return Apollo.useQuery<EventsQuery, EventsQueryVariables>(EventsDocument, options);
       }
-export function useEventsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EventsQuery, Even>) {
+export function useEventsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EventsQuery, EventsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<EventsQuery, Even>(EventsDocument, options);
+          return Apollo.useLazyQuery<EventsQuery, EventsQueryVariables>(EventsDocument, options);
         }
 export type EventsQueryHookResult = ReturnType<typeof useEventsQuery>;
 export type EventsLazyQueryHookResult = ReturnType<typeof useEventsLazyQuery>;
-export type EventsQueryResult = Apollo.QueryResult<EventsQuery, Even>;
+export type EventsQueryResult = Apollo.QueryResult<EventsQuery, EventsQueryVariables>;
 export const LaunchDetailsDocument = gql`
     query LaunchDetails($id: ID!) {
   launch(id: $id) {
     mission_name
     details
-    upcoming
-    is_tentative
     launch_date_local
-    launch_success
     launch_site {
       site_name_long
     }
     links {
       video_link
     }
-    telemetry {
-      flight_club
-    }
     rocket {
-      rocket_name
       first_stage {
         cores {
-          core {
-            missions {
-              flight
-              name
-            }
-            asds_attempts
-            asds_landings
-            block
-            id
-            original_launch
-            reuse_count
-            rtls_attempts
-            rtls_landings
-            status
-            water_landing
-          }
           flight
-          gridfins
           land_success
           landing_intent
           landing_type
-          landing_vehicle
-          legs
-          reused
         }
       }
       second_stage {
@@ -1442,9 +1415,8 @@ export const LaunchDetailsDocument = gql`
           customers
           orbit
           payload_type
-          reused
-          payload_mass_kg
           payload_mass_lbs
+          payload_mass_kg
         }
       }
     }
@@ -1468,17 +1440,17 @@ export const LaunchDetailsDocument = gql`
  *   },
  * });
  */
-export function useLaunchDetailsQuery(baseOptions: Apollo.QueryHookOptions<LaunchDetailsQuery, LaunchDetai>) {
+export function useLaunchDetailsQuery(baseOptions: Apollo.QueryHookOptions<LaunchDetailsQuery, LaunchDetailsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LaunchDetailsQuery, LaunchDetai>(LaunchDetailsDocument, options);
+        return Apollo.useQuery<LaunchDetailsQuery, LaunchDetailsQueryVariables>(LaunchDetailsDocument, options);
       }
-export function useLaunchDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchDetailsQuery, LaunchDetai>) {
+export function useLaunchDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchDetailsQuery, LaunchDetailsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LaunchDetailsQuery, LaunchDetai>(LaunchDetailsDocument, options);
+          return Apollo.useLazyQuery<LaunchDetailsQuery, LaunchDetailsQueryVariables>(LaunchDetailsDocument, options);
         }
 export type LaunchDetailsQueryHookResult = ReturnType<typeof useLaunchDetailsQuery>;
 export type LaunchDetailsLazyQueryHookResult = ReturnType<typeof useLaunchDetailsLazyQuery>;
-export type LaunchDetailsQueryResult = Apollo.QueryResult<LaunchDetailsQuery, LaunchDetai>;
+export type LaunchDetailsQueryResult = Apollo.QueryResult<LaunchDetailsQuery, LaunchDetailsQueryVariables>;
 export const Document = gql`
     {
   launches {
@@ -1487,15 +1459,11 @@ export const Document = gql`
     mission_name
     launch_date_local
     launch_success
-    upcoming
     launch_site {
       site_name_long
     }
     rocket {
       rocket_name
-    }
-    links {
-      video_link
     }
   }
 }
@@ -1554,14 +1522,14 @@ export const RocketsDocument = gql`
  *   },
  * });
  */
-export function useRocketsQuery(baseOptions?: Apollo.QueryHookOptions<RocketsQuery, Rocke>) {
+export function useRocketsQuery(baseOptions?: Apollo.QueryHookOptions<RocketsQuery, RocketsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<RocketsQuery, Rocke>(RocketsDocument, options);
+        return Apollo.useQuery<RocketsQuery, RocketsQueryVariables>(RocketsDocument, options);
       }
-export function useRocketsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RocketsQuery, Rocke>) {
+export function useRocketsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RocketsQuery, RocketsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<RocketsQuery, Rocke>(RocketsDocument, options);
+          return Apollo.useLazyQuery<RocketsQuery, RocketsQueryVariables>(RocketsDocument, options);
         }
 export type RocketsQueryHookResult = ReturnType<typeof useRocketsQuery>;
 export type RocketsLazyQueryHookResult = ReturnType<typeof useRocketsLazyQuery>;
-export type RocketsQueryResult = Apollo.QueryResult<RocketsQuery, Rocke>;
+export type RocketsQueryResult = Apollo.QueryResult<RocketsQuery, RocketsQueryVariables>;

@@ -38,8 +38,7 @@ const LaunchDetails: FC<Props> = ({ data }) => {
               <span>{data?.launch?.launch_site?.site_name_long}</span>
             </p>
             <hr />
-
-            <p>
+           <p>
               <span>Launch Date</span>
               <span>{data?.launch?.launch_date_local}</span>
             </p>

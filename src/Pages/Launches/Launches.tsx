@@ -2,7 +2,6 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Unnamed_1_Query } from "../../generated/graphql";
 import styles from "./Launches.module.css";
-
 import {
   Timeline,
   TimelineItem,
