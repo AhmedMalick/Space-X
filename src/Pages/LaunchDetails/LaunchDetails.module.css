@@ -81,6 +81,20 @@ hr {
   text-align: left;
 }
 
+.error {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error p {
+  font-size: 20px;
+  font-family: "D-DIN-Bold", sans-serif;
+  color: #ff0000;
+}
+
 @media only screen and (min-width: 1200px) {
   .info {
     width: 90vw;

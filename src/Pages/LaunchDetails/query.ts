@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client"
 
-const QUERY_LAUNCH_DETAILS = gql`
+gql`
   query LaunchDetails($id: ID!) {
     launch(id: $id) {
       mission_name
@@ -36,4 +36,3 @@ const QUERY_LAUNCH_DETAILS = gql`
     }
   }
 `
-    ;

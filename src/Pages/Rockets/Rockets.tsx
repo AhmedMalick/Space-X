@@ -1,10 +1,10 @@
-import { FC } from "react";
-import rocketPic from "../../Assets/rocket.jpeg";
-import { RocketsQuery } from "../../generated/graphql";
-import styles from "./Rockets.module.css";
+import { FC } from "react"
+import rocketPic from "../../Assets/Images/rocket.jpeg"
+import { RocketsQuery } from "../../generated/graphql"
+import styles from "./Rockets.module.css"
 
 interface Props {
-  data: RocketsQuery | undefined;
+  data: RocketsQuery | undefined
 }
 
 const Rockets: FC<Props> = ({ data }) => {
@@ -36,7 +36,7 @@ const Rockets: FC<Props> = ({ data }) => {
           </div>
         ))}
     </div>
-  );
-};
+  )
+}
 
-export default Rockets;
+export default Rockets

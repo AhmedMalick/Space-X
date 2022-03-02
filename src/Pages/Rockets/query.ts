@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client"
 
-const QUERY_ROCKETS = gql`
+gql`
   query Rockets {
     rockets {
       name
@@ -8,7 +8,6 @@ const QUERY_ROCKETS = gql`
       first_flight
       active
       cost_per_launch
+    }
   }
-}
-
-  `;
+`

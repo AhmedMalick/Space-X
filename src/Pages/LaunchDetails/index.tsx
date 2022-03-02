@@ -1,24 +1,29 @@
-import { useParams } from "react-router";
-import Loading from '../../Components/Loading/Loading'
-import LaunchDetails from './LaunchDetails'
-import { useLaunchDetailsQuery } from "../../generated/graphql";
+import { useParams } from "react-router"
+import Loading from "../../Components/Loading/Loading"
+import LaunchDetails from "./LaunchDetails"
+import { useLaunchDetailsQuery } from "../../generated/graphql"
+import styles from "./LaunchDetails.module.css"
 
 const LaunchDetailsContainer = () => {
-  const { id } = useParams();
+  const { id } = useParams()
 
   const { data, loading, error } = useLaunchDetailsQuery({
     variables: { id },
-  });
-    
-    if (loading) {
-        <Loading />
-    }
+  })
 
-    if (error) {
-      <h1>Error</h1>;
-    }
+  if (loading) {
+    ;<Loading />
+  }
 
-  return <LaunchDetails data={data} /> ;
-};
+  if (error) {
+    return (
+      <div className={styles.error}>
+        <p>{error.message}</p>
+      </div>
+    )
+  }
 
-export default LaunchDetailsContainer;
+  return <LaunchDetails data={data} />
+}
+
+export default LaunchDetailsContainer

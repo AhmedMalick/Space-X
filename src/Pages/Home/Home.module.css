@@ -1,13 +1,13 @@
 @font-face {
   font-family: "D-DIN";
-  src: url("../../Fonts/D-DIN.otf") format("opentype");
+  src: url("../../Assets/Fonts/D-DIN.otf") format("opentype");
   font-weight: 500;
   font-display: swap;
 }
 
 @font-face {
   font-family: "D-DIN-Bold";
-  src: url("../../Fonts/D-DIN.otf") format("opentype");
+  src: url("../../Assets/Fonts/D-DIN.otf") format("opentype");
   font-weight: 500;
   font-display: swap;
 }
@@ -23,7 +23,7 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  background: url(../../Assets/bg-1.jpg);
+  background: url(../../Assets/Images/bg-1.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -33,7 +33,7 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  background: url(../../Assets/bg-2.jpg);
+  background: url(../../Assets/Images/bg-2.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -43,7 +43,7 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  background: url(../../Assets/bg-3.jpg);
+  background: url(../../Assets/Images/bg-3.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -53,7 +53,7 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  background: url(../../Assets/bg-4.jpg);
+  background: url(../../Assets/Images/bg-4.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -109,23 +109,22 @@
 }
 
 .btn {
-  overflow: hidden;
-}
-
-.btn a {
+  margin-top: 20px;
+  width: 120px;
+  height: 50px;
   position: relative;
-  text-decoration: none;
   border: 1px solid #fff;
-  padding: 20px 60px;
-  font: 14px/50px "D-DIN-Bold", Arial, Verdana, sans-serif;
+  background: transparent;
   color: #fff;
+  font: 14px/50px "D-DIN-Bold", Arial, Verdana, sans-serif;
   text-align: center;
   transition: all 0.3s ease-in-out;
   z-index: 1;
   overflow: hidden;
+  cursor: pointer;
 }
 
-.btn a::before {
+.btn::before {
   content: "";
   position: absolute;
   top: 0;
@@ -138,12 +137,12 @@
   transform: translateY(100%);
 }
 
-.btn a:hover::before {
+.btn:hover::before {
   transform: translateY(0);
   z-index: -1;
 }
 
-.btn a:hover {
+.btn:hover span {
   color: #000;
 }
 

@@ -1,16 +1,16 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client"
 
-const QUERY_EVENTS = gql`
+gql`
   query Events {
     histories {
-        details
-        event_date_utc
-        title
-        flight {
-            links {
-                video_link
-            }
+      details
+      event_date_utc
+      title
+      flight {
+        links {
+          video_link
         }
+      }
     }
-}
-`;
+  }
+`
