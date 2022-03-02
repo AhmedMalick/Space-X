@@ -1,6 +1,6 @@
 # Space X App
 
-[live Site](https://a-space-x-app.netlify.app/)
+[live Site](https://a-space-x.netlify.app/)
 
 ![Space X App](/preview.png)
 
