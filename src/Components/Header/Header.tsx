@@ -41,24 +41,16 @@ const Header = () => {
             <div>
               <ul>
                 <li>
-                  <Link className={styles.link} to="/#">
-                    HOME
-                  </Link>
+                  <Link to="/#">HOME</Link>
                 </li>
                 <li>
-                  <Link className={styles.link} to="/launches">
-                    LAUNCHES
-                  </Link>
+                  <Link to="/launches">LAUNCHES</Link>
                 </li>
                 <li>
-                  <Link className={styles.link} to="/events">
-                    EVENTS
-                  </Link>
+                  <Link to="/events">EVENTS</Link>
                 </li>
                 <li>
-                  <Link className={styles.link} to="/rockets">
-                    ROCKETS
-                  </Link>
+                  <Link to="/rockets">ROCKETS</Link>
                 </li>
               </ul>
             </div>
