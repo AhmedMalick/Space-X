@@ -22,23 +22,26 @@
   padding: 20px 45px;
 }
 
-.links {
+.links_big {
   display: flex;
   align-items: center;
   padding: 0;
 }
 
-.links li {
+.links_big li,
+.links_small li {
   list-style: none;
   margin: 0 17px;
 }
 
-.links span {
+.links_big span,
+.links_small span {
   font: 12px/18px "D-DIN-Bold", Arial, Verdana, sans-serif;
   color: #979797;
 }
 
-.links a {
+.links_big a,
+.links_small a {
   position: relative;
   text-decoration: none;
   font: 12px/18px "D-DIN-Bold", Arial, Verdana, sans-serif;
@@ -47,7 +50,8 @@
   padding-bottom: 5px;
 }
 
-.links a::after {
+.links_big a::after,
+.links_small a::after {
   content: "";
   position: absolute;
   background-color: #fff;
@@ -58,13 +62,49 @@
   transition: 0.3s;
 }
 
-.links a:hover::after {
+.links_big a:hover::after,
+.links_small a:hover::after {
   height: 1px;
   width: 100%;
 }
 
-@media only screen and (min-width: 320px) {
-  .links li {
-    margin: 0 8px;
+.links_small {
+  display: none;
+}
+
+@media only screen and (max-width: 640px) {
+  ul {
+    flex-direction: column;
+  }
+
+  .links_small {
+    display: flex;
+  }
+
+  .links_small div {
+    display: flex;
+  }
+
+  .links_small div.text {
+    display: flex;
+    justify-content: center;
+  }
+
+  .links_big {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .links_big li,
+  .links_small li {
+    margin: 0 7px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .links_big li,
+  .links_small li {
+    margin: 0 5px;
   }
 }

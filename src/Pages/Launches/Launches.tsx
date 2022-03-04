@@ -26,7 +26,7 @@ const Launches: FC<Props> = ({ limit, setLimit, data }) => {
               <p className={styles.details}>{launch?.details}</p>
               <p>
                 <span>LAUNCH DATE:</span>
-                {launch?.launch_date_local}
+                {new Date(launch?.launch_date_local).toLocaleString()}
               </p>
               <p>
                 <span>LAUNCH SITE:</span>
@@ -52,12 +52,13 @@ const Launches: FC<Props> = ({ limit, setLimit, data }) => {
       </div>
       <div className={styles.btn_wrapper}>
         <button
-          className={styles.btn}
+          disabled={limit >= 110}
+          className={`${styles.btn} ${limit >= 110 && styles.disabled}`}
           onClick={() => {
             setLimit(limit + 10)
           }}
         >
-          <span>Load More</span>
+          <span>LOAD MORE</span>
         </button>
       </div>
     </div>
