@@ -37,17 +37,28 @@ const options = {
 
 this.addEventListener("fetch", (event) => {
   if (!navigator.onLine) {
+//     event.respondWith(
+//       caches
+//         .match(event.request, options)
+//         .then((response) => {
+//           if (response) {
+//             return response || fetch.response;
+//           }
+//         })
+//         .catch((err) => {
+//           console.log("err", err);
+//         })
+//     );
+    
     event.respondWith(
-      caches
-        .match(event.request, options)
-        .then((response) => {
-          if (response) {
-            return response || fetch.response;
-          }
-        })
-        .catch((err) => {
-          console.log("err", err);
-        })
-    );
+    caches.open('mysite').then(function(cache) {
+      return cache.match(event.request).then(function (response) {
+        return response || fetch(event.request).then(function(response) {
+          cache.put(event.request, response.clone());
+          return response;
+        });
+      });
+    })
+  );
   }
 });
