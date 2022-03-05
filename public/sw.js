@@ -3,9 +3,9 @@ const version = "v1";
 const cacheFiles = [
   "https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed&display=swap",
   "/static/media/D-DIN-Bold.7bb4b1a4.otf",
-  "/static/js/2.bfca45df.chunk.js",
-  "/static/js/main.088af7e6.chunk.js",
-  "/static/css/main.b750d071.chunk.css",
+  "/static/js/2.788ec13d.chunk.js",
+  "/static/js/main.88704b41.chunk.js",
+  "/static/css/main.2bc93317.chunk.css",
   "/static/media/D-DIN.31d45669.otf",
   "/static/media/bg-1.0da36e21.jpg",
   "/static/media/bg-2.ab56f8ec.jpg",
@@ -37,28 +37,17 @@ const options = {
 
 this.addEventListener("fetch", (event) => {
   if (!navigator.onLine) {
-//     event.respondWith(
-//       caches
-//         .match(event.request, options)
-//         .then((response) => {
-//           if (response) {
-//             return response || fetch.response;
-//           }
-//         })
-//         .catch((err) => {
-//           console.log("err", err);
-//         })
-//     );
-    
     event.respondWith(
-    caches.open('mysite').then(function(cache) {
-      return cache.match(event.request).then(function (response) {
-        return response || fetch(event.request).then(function(response) {
-          cache.put(event.request, response.clone());
-          return response;
-        });
-      });
-    })
-  );
+      caches
+        .match(event.request, options)
+        .then((response) => {
+          if (response) {
+            return response || fetch.response;
+          }
+        })
+        .catch((err) => {
+          console.log("err", err);
+        })
+    );
   }
 });

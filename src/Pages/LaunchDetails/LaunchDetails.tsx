@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { LaunchDetailsQuery } from "../../generated/graphql";
-import ReactPlayer from "react-player";
-import styles from "./LaunchDetails.module.css";
+import { FC } from "react"
+import { LaunchDetailsQuery } from "../../generated/graphql"
+import ReactPlayer from "react-player"
+import styles from "./LaunchDetails.module.css"
 
 interface Props {
-  data: LaunchDetailsQuery | undefined;
+  data: LaunchDetailsQuery | undefined
 }
 
 const LaunchDetails: FC<Props> = ({ data }) => {
@@ -15,12 +15,11 @@ const LaunchDetails: FC<Props> = ({ data }) => {
         <div className={styles.col1}>
           {data?.launch?.links?.video_link ? (
             <ReactPlayer
+              className={styles.video}
               url={data?.launch?.links?.video_link}
               data-testid="react-player"
               light={true}
               controls={true}
-              width="850px"
-              height="450px"
             />
           ) : null}
           <p>{data?.launch?.details}</p>
@@ -38,7 +37,7 @@ const LaunchDetails: FC<Props> = ({ data }) => {
               <span>{data?.launch?.launch_site?.site_name_long}</span>
             </p>
             <hr />
-           <p>
+            <p>
               <span>Launch Date</span>
               <span>{data?.launch?.launch_date_local}</span>
             </p>
@@ -142,7 +141,7 @@ const LaunchDetails: FC<Props> = ({ data }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LaunchDetails;
+export default LaunchDetails
