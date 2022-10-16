@@ -19,4 +19,4 @@ This is the code repo of Space X App.
  
  - Offline Availability 
  - Caching
- - Real data of Space X
+ - Real data of Space X Company
