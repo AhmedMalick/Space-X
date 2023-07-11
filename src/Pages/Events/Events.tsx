@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { EventsQuery } from "../../generated/graphql"
-import ReactPlayer from "react-player"
+import formatDate from "../../utils/formatDate"
 import styles from "./Events.module.css"
 
 interface Props {
@@ -13,26 +13,23 @@ const Events: FC<Props> = ({ data }) => {
       <h1>Events</h1>
       <div className={styles.card_wrapper}>
         {data?.histories &&
-          data.histories
-            .filter((history) => history?.flight?.links?.video_link)
-            .map((history, index) => (
-              <div key={index} className={styles.card}>
-                <h3>{history?.title}</h3>
-                {history?.flight?.links?.video_link ? (
-                  <ReactPlayer
-                    className={styles.video}
-                    data-testid="react-player"
-                    light={true}
-                    controls={true}
-                    url={history?.flight?.links?.video_link}
-                  />
-                ) : null}
-                <div>
-                  <p>{history?.details}</p>
-                  <h2>{history?.event_date_utc}</h2>
-                </div>
+          data.histories.map((history, index) => (
+            <div key={index} className={styles.card}>
+              <h3>{history?.title}</h3>
+              <div>
+                <p>{history?.details}</p>
+                <h2>{formatDate(new Date(history?.event_date_utc))}</h2>
               </div>
-            ))}
+              <div className={styles.btn_wrapper}>
+                <a
+                  href={history?.links?.article ? history?.links?.article : ""}
+                  className={styles.btn}
+                >
+                  <span>READ ARTICLE</span>
+                </a>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   )

@@ -6,10 +6,8 @@ gql`
       details
       event_date_utc
       title
-      flight {
-        links {
-          video_link
-        }
+      links {
+        article
       }
     }
   }

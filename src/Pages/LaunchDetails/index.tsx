@@ -8,11 +8,11 @@ const LaunchDetailsContainer = () => {
   const { id } = useParams()
 
   const { data, loading, error } = useLaunchDetailsQuery({
-    variables: { id },
+    variables: { id: id ? id : "" },
   })
 
   if (loading) {
-    ;<Loading />
+    return <Loading />
   }
 
   if (error) {
